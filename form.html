@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form Style Layout</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #e8f5fe; /* Light blue matching the theme */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Form Container */
+        .form-container {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        /* Form Title Card Block */
+        .title-block {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border-top: 10px solid #1DA1F2; /* Blue Tick color */
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Flex container to align title text and the blue tick logo */
+        .title-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 400;
+            color: #202124;
+        }
+
+        /* Blue Tick SVG Styling */
+        .blue-tick-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .title-block p {
+            margin: 0;
+            font-size: 14px;
+            color: #202124;
+        }
+
+        /* Individual Input Card Blocks */
+        .input-block {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #dadce0;
+        }
+
+        .input-block label {
+            display: block;
+            font-size: 16px;
+            color: #202124;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Underline Text Inputs */
+        .input-block input[type="text"],
+        .input-block input[type="password"] {
+            width: 100%;
+            max-width: 360px;
+            border: none;
+            border-bottom: 1px solid #70757a;
+            padding: 8px 0;
+            font-size: 14px;
+            outline: none;
+            transition: border-bottom-color 0.2s ease;
+        }
+
+        /* Input Highlight on Click */
+        .input-block input[type="text"]:focus,
+        .input-block input[type="password"]:focus {
+            border-bottom: 2px solid #1DA1F2;
+        }
+
+        /* Submit Button Styling */
+        .submit-btn {
+            background-color: #1DA1F2;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d8bd9;
+        }
+
+        /* Thank you block message styling */
+        .thank-you-block {
+            display: none; /* Hidden by default until JavaScript shows it */
+            background-color: #ffffff;
+            border-radius: 8px;
+            border-top: 10px solid #1DA1F2;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .thank-you-block h2 {
+            margin: 0 0 12px 0;
+            font-size: 28px;
+            font-weight: 400;
+            color: #202124;
+        }
+
+        .thank-you-block p {
+            margin: 0;
+            font-size: 15px;
+            color: #5f6368;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <!-- The interactive entry form -->
+        <form id="applicationForm" onsubmit="showSuccessMessage(event)">
+            
+            <!-- Block 1: Title Block -->
+            <div class="title-block">
+                <div class="title-header">
+                    <h1>Apply for the blue tick</h1>
+                    <!-- Blue Tick Verification Badge SVG -->
+                    <svg class="blue-tick-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                        <path d="M22.5 12.5C22.5 13.3 21.9 14.1 21.6 14.8C21.2 15.6 21.2 16.5 21.5 17.3C21.8 18.1 21.4 19 20.8 19.6C20.2 20.2 19.3 20.6 18.5 20.3C17.7 20 16.8 20 16 20.4C15.2 20.8 14.5 21.4 13.7 21.4C12.9 21.4 12.1 20.8 11.3 20.4C10.5 20 9.6 20 8.8 20.3C8 20.6 7.1 20.2 6.5 19.6C5.9 19 5.5 18.1 5.8 17.3C6.1 16.5 6.1 15.6 5.7 14.8C5.3 14.1 4.7 13.3 4.7 12.5C4.7 11.7 5.3 10.9 5.7 10.2C6.1 9.4 6.1 8.5 5.8 7.7C5.5 6.9 5.9 6 6.5 5.4C7.1 4.8 8 4.4 8.8 4.7C9.6 5 10.5 5 11.3 4.6C12.1 4.2 12.8 3.6 13.7 3.6C14.5 3.6 15.3 4.2 16.1 4.6C16.9 5 17.8 5 18.6 4.7C19.4 4.4 20.3 4.8 20.9 5.4C21.5 6 21.9 6.9 21.6 7.7C21.3 8.5 21.3 9.4 21.7 10.2C22.1 10.9 22.7 11.7 22.7 12.5H22.5Z" fill="#1DA1F2"/>
+                        <path d="M9.7001 14.8L6.7001 11.8L7.8001 10.7L9.7001 12.6L15.6 6.70001L16.7 7.80001L9.7001 14.8Z" fill="white"/>
+                    </svg>
+                </div>
+                <p>Please fill out your details below to get started.</p>
+            </div>
+
+            <!-- Block 2: Country Input -->
+            <div class="input-block">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Enter" required>
+            </div>
+
+            <!-- Block 3: Username Input -->
+            <div class="input-block">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter" required>
+            </div>
+
+            <!-- Block 4: Password Input -->
+            <div class="input-block">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter" required>
+            </div>
+
+            <!-- Form Submission Button -->
+            <div style="padding-left: 4px;">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+
+        </form>
+
+        <!-- The Confirmation Thank You Screen (revealed upon submission) -->
+        <div id="thankYouScreen" class="thank-you-block">
+            <h2>Thank you for applying for the blue tick.</h2>
+            <p><strong>Note:</strong> You applied for the blue tick. Our Instagram team will verify your account, and then if you are eligible, we will provide the blue tick.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript processing function -->
+    <script>
+        function showSuccessMessage(event) {
+            // Stops the page from trying to reload to another web link
+            event.preventDefault(); 
+            
+            // Hide the actual form fields
+            document.getElementById('applicationForm').style.display = 'none';
+            
+            // Display the matching thank you message block
+            document.getElementById('thankYouScreen').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
