@@ -1,234 +1,141 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Calculator</title>
-
+    <title>Google Form Style Layout</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
+        /* General Page Styling */
         body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f0ebf8; /* Soft purple Google Forms background */
             margin: 0;
-            min-height: 100vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #141e30, #243b55);
-            font-family: Arial, sans-serif;
         }
 
-        .calculator {
-            width: 320px;
-            padding: 20px;
-            border-radius: 20px;
-            background: #182433;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        h2 {
-            text-align: center;
-            color: white;
-            margin-top: 0;
-        }
-
-        #display {
+        /* Form Container */
+        .form-container {
             width: 100%;
-            height: 75px;
-            margin-bottom: 15px;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: #eaf1f8;
-            color: #111;
-            font-size: 30px;
-            text-align: right;
+            max-width: 640px;
         }
 
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+        /* Form Title Card Block */
+        .title-block {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border-top: 10px solid #673ab7; /* Google Forms signature purple bar */
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        button {
-            height: 55px;
+        .title-block h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            font-weight: 400;
+            color: #202124;
+        }
+
+        .title-block p {
+            margin: 0;
+            font-size: 14px;
+            color: #202124;
+        }
+
+        /* Individual Input Card Blocks */
+        .input-block {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #dadce0;
+        }
+
+        .input-block label {
+            display: block;
+            font-size: 16px;
+            color: #202124;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Underline Text Inputs */
+        .input-block input[type="text"],
+        .input-block input[type="password"] {
+            width: 100%;
+            max-width: 360px;
             border: none;
-            border-radius: 12px;
-            font-size: 20px;
-            cursor: pointer;
-            background: #304257;
+            border-bottom: 1px solid #70757a;
+            padding: 8px 0;
+            font-size: 14px;
+            outline: none;
+            transition: border-bottom-color 0.2s ease;
+        }
+
+        /* Input Highlight on Click */
+        .input-block input[type="text"]:focus,
+        .input-block input[type="password"]:focus {
+            border-bottom: 2px solid #673ab7;
+        }
+
+        /* Submit Button Styling */
+        .submit-btn {
+            background-color: #673ab7;
             color: white;
-            transition: 0.15s;
+            border: none;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
         }
 
-        button:hover {
-            filter: brightness(1.25);
-        }
-
-        .operator {
-            background: #ff9f43;
-            color: #111;
-        }
-
-        .clear {
-            background: #ff5c5c;
-        }
-
-        .equal {
-            background: #20bf6b;
-            color: #111;
-        }
-
-        .zero {
-            grid-column: span 2;
+        .submit-btn:hover {
+            background-color: #512da8;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="calculator">
-        <h2>My Calculator</h2>
+    <div class="form-container">
+        <form action="#" method="POST">
+            
+            <!-- Block 1: Title Block -->
+            <div class="title-block">
+                <h1>Account Registration</h1>
+                <p>Please fill out your details below to get started.</p>
+            </div>
 
-        <input type="text" id="display"
-               value="0" readonly aria-label="Calculator display"
-               aria-live="polite">
+            <!-- Block 2: Country Input -->
+            <div class="input-block">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Your answer" required>
+            </div>
 
-        <div class="buttons">
-            <button class="clear" data-action="clear">AC</button>
-            <button data-action="delete">DEL</button>
-            <button class="operator" data-value="%">%</button>
-            <button class="operator" data-value="/">÷</button>
+            <!-- Block 3: Username Input -->
+            <div class="input-block">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Your answer" required>
+            </div>
 
-            <button data-value="7">7</button>
-            <button data-value="8">8</button>
-            <button data-value="9">9</button>
-            <button class="operator" data-value="*">×</button>
+            <!-- Block 4: Password Input -->
+            <div class="input-block">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Your answer" required>
+            </div>
 
-            <button data-value="4">4</button>
-            <button data-value="5">5</button>
-            <button data-value="6">6</button>
-            <button class="operator" data-value="-">−</button>
+            <!-- Form Submission -->
+            <div style="padding-left: 4px;">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
 
-            <button data-value="1">1</button>
-            <button data-value="2">2</button>
-            <button data-value="3">3</button>
-            <button class="operator" data-value="+">+</button>
-
-            <button data-action="sign">+/−</button>
-            <button class="zero" data-value="0">0</button>
-            <button data-value=".">.</button>
-
-            <button class="equal" data-action="calculate"
-                    style="grid-column: span 4;">=</button>
-        </div>
+        </form>
     </div>
-
-    <script>
-        const display = document.getElementById("display");
-        let expression = "";
-        let finished = false;
-
-        function update() {
-            display.value = expression || "0";
-        }
-
-        function addValue(value) {
-            if (finished) {
-                expression = "";
-                finished = false;
-            }
-
-            if ("+-*/%".includes(value)) {
-                if (!expression && value !== "-") return;
-
-                if (/[+\-*/%]$/.test(expression)) {
-                    expression = expression.slice(0, -1);
-                }
-            }
-
-            expression += value;
-            update();
-        }
-
-        function clearAll() {
-            expression = "";
-            finished = false;
-            update();
-        }
-
-        function deleteLast() {
-            expression = expression.slice(0, -1);
-            finished = false;
-            update();
-        }
-
-        function changeSign() {
-            if (!expression) return;
-
-            if (/^-?\d*\.?\d+$/.test(expression)) {
-                expression = expression.startsWith("-")
-                    ? expression.slice(1)
-                    : "-" + expression;
-                update();
-            }
-        }
-
-        function calculate() {
-            if (!expression) return;
-
-            try {
-                if (!/^[0-9+\-*/%.()\s]+$/.test(expression)) {
-                    throw new Error("Invalid");
-                }
-
-                const result = Function(
-                    '"use strict"; return (' + expression + ')'
-                )();
-
-                if (!Number.isFinite(result)) {
-                    throw new Error("Invalid");
-                }
-
-                expression = String(
-                    Number(result.toPrecision(12))
-                );
-                finished = true;
-                update();
-            } catch {
-                display.value = "Invalid";
-                expression = "";
-                finished = true;
-            }
-        }
-
-        document.querySelectorAll("button").forEach(button => {
-            button.addEventListener("click", () => {
-                const action = button.dataset.action;
-                const value = button.dataset.value;
-
-                if (action === "clear") clearAll();
-                else if (action === "delete") deleteLast();
-                else if (action === "sign") changeSign();
-                else if (action === "calculate") calculate();
-                else addValue(value);
-            });
-        });
-
-        document.addEventListener("keydown", event => {
-            if (/^[0-9.]$/.test(event.key)) addValue(event.key);
-            else if ("+-*/%".includes(event.key)) addValue(event.key);
-            else if (event.key === "Enter" || event.key === "=") calculate();
-            else if (event.key === "Backspace") deleteLast();
-            else if (event.key === "Escape") clearAll();
-        });
-    </script>
 
 </body>
 </html>
-```
-
